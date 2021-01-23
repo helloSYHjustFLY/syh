@@ -1,0 +1,136 @@
+//开发者：邵义豪
+//开发时间：2021.1.23
+//版本：1.0
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int main()
+{
+    int a, b, result, count = 0;
+    time_t start, end;
+    printf("您好！我是开发者小邵 syh。\n");
+    printf("欢迎使用本产品！祝您使用愉快！\n\n");
+    printf("您想要进行什么运算？（请输入算术符号）\n");
+    char sign, ch;
+    scanf("%c", &sign);
+    srand((int)time(NULL));
+    switch (sign)
+    {
+        case '+':
+    label1: a = (int)rand() % 100;
+            b = (int)rand() % 100;
+            printf("%d + %d = ", a, b);
+            start = time(NULL);
+            scanf("%d", &result);
+            end = time(NULL);
+            getchar();//消化回车
+            if (result == a + b)
+            {
+                count ++;
+                printf("%d + %d = %d\n", a, b, result);
+                printf("祝贺你!回答正确！\n");
+                printf("用时：%.1f s\n", difftime(end, start));
+            }
+            else
+            {
+                printf("%d + %d = %d\n", a, b, a+b);
+                printf("对不起，回答错误！\n");
+            }
+            printf("\n继续吗?(Y or N)");
+            putchar(10);
+            ch = getchar();
+            putchar(10);
+            if (ch == 'Y')
+                goto label1;
+            else
+                break;
+        case '-':
+        label2: a = (int)rand() % 100;
+                b = (int)rand() % 100;
+                printf("%d - %d = ", a, b);
+                start = time(NULL);
+                scanf("%d", &result);
+                end = time(NULL);
+                getchar();
+                if (result == a - b)
+                {
+                    count ++;
+                    printf("%d - %d = %d\n", a, b, result);
+                    printf("祝贺你!回答正确！\n");
+                    printf("用时：%.1f s\n", difftime(end, start));
+                }
+                else
+                {
+                    printf("%d - %d = %d\n", a, b, a-b);
+                    printf("对不起，回答错误！\n");
+                }
+                printf("continue?(Y or N)");
+                putchar(10);
+                ch = getchar();
+                if (ch == 'Y')
+                    goto label2;
+                else
+                    break;
+        case '*':
+        label3: a = (int)rand() % 100;
+                b = (int)rand() % 100;
+                printf("%d * %d = ", a, b);
+                start = time(NULL);
+                scanf("%d", &result);
+                end = time(NULL);
+                getchar();
+                if (result == a * b)
+                {
+                    count ++;
+                    printf("%d * %d = %d\n", a, b, result);
+                    printf("祝贺你!回答正确！\n");
+                    printf("用时：%.1f s\n", difftime(end, start));
+                }
+                else
+                {
+                    printf("%d * %d = %d\n", a, b, a*b);
+                    printf("对不起，回答错误!\n");
+                }
+                printf("continue?(Y or N)");
+                putchar(10);
+                ch = getchar();
+                if (ch == 'Y')
+                    goto label3;
+                else
+                    break;
+        default:
+        case '/':
+        label4: do{
+                    a = (int)rand() % 100;
+                    b = (int)rand() % 100;
+                }while(a % b != 0);
+                printf("%d / %d = ", a, b);
+                start = time(NULL);
+                scanf("%d", &result);
+                end = time(NULL);
+                getchar();
+                if (result == a / b)
+                {
+                    count ++;
+                    printf("%d / %d = %d\n", a, b, result);
+                    printf("祝贺你!回答正确！\n");
+                    printf("用时：%.1f s\n", difftime(end, start));
+                }
+                else
+                {
+                    printf("%d / %d = %d\n", a, b, a/b);
+                    printf("对不起，回答错误!\n");
+                }
+                printf("continue?(Y or N)");
+                putchar(10);
+                ch = getchar();
+                if (ch == 'Y')
+                    goto label4;
+                else
+                    break;
+    }
+    printf("您一共答对了%d道题。\n\n", count);
+    printf("感谢您使用本产品！\n祝学习进步！\n");
+    return 0;
+    
+}
